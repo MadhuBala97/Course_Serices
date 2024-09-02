@@ -1,0 +1,91 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DotCom - Creative Agency Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    
+
+
+    <!-- Navbar Start -->
+    
+    <div class="container-fluid nav-bar p-0">
+        <div class="container-lg p-0">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="m-0 text-white display-4"><span class="text-primary">D</span>ot<span class="text-primary">C</span>om</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="/home/" class="nav-item nav-link active">Home</a>
+                        <a href="/addfeedback/" class="nav-item nav-link">Add Feedback</a>
+                        <a href="/showuserservices/" class="nav-item nav-link">Show Services</a>
+                        <a href="/logout/" class="nav-item nav-link">Logout</a>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5 mb-5">
+        <h1 class="display-4 text-white mb-3 mt-0 mt-lg-5">User Feedback</h1>
+        <div class="d-inline-flex text-white">
+            
+        </div>
+    </div>
+    <!-- Page Header Start -->
+<table border="10" height="200" width="100%">
+   <tr>
+       <th><b>Name</b></th>
+       <th><b>Email</b></th>
+       <th><b>Phoneno</b></th>
+       <th><b>Feedback</b></th>
+       <th><b>Action</b></th>
+    </tr>
+{% for single in alldata %}
+    <tr>
+        <th>{{ single.name }} </th>
+        <th>{{ single.email }} </th>
+        <th>{{ single.phoneno }} </th>
+        <th>{{ single.feedback }} </th>
+        <th><a href=""><img src="{% static 'img/edit.png' %}"  height=25 width=25/></a></th>
+        <th><a href="{% url 'delete_userfeedback' pk=single.p_id %}"><img src="{% static 'img/del.png' %}"  height=25 width=25/></a></th>
+    </tr>
+{% endfor %}
+</table>
+   {% include 'template/footer.html'%}
+    <!-- Footer end-->
+</body>
+
+</html>    
